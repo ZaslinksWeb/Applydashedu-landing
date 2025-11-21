@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Applydash | Study in the UK 2026</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Swiper Carousel -->
+  <link
+    rel="stylesheet"
+    href="https://unpkg.com/swiper@9/swiper-bundle.min.css"
+  />
+
+  <style>
+    :root {
+      --primary: #2563eb;
+      --accent: #0ea5e9;
+      --primary-dark: #1d4ed8;
+      --text-main: #1e293b;
+      --text-muted: #64748b;
+      --bg-card: #ffffff;
+      --shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+      --radius: 16px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: "Poppins", sans-serif;
+      background: linear-gradient(135deg, #f0f6ff, #ffffff);
+      margin: 0;
+      padding: 0;
+      color: var(--text-main);
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    header {
+      background: white;
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(37, 99, 235, 0.15);
+      padding: 14px 20px;
+    }
+
+    .nav {
+      max-width: 1200px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .btn-nav {
+      padding: 8px 18px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      border: none;
+      color: white;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    main {
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px 16px 40px;
+    }
+
+    /* HERO */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 40px;
+      padding: 40px 0;
+      align-items: center;
+    }
+
+    .hero-title {
+      font-size: 2.7rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+      line-height: 1.2;
+      margin: 0;
+    }
+
+    .hero-title span {
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 1rem;
+      color: var(--text-muted);
+    }
+
+    .hero-cta {
+      margin-top: 20px;
+    }
+
+    .btn-primary {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .hero-image-card {
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      background: white;
+    }
+
+    .hero-image-card img {
+      width: 100%;
+      height: 280px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero-image-footer {
+      padding: 12px;
+      background: #e8f0ff;
+      font-size: 0.9rem;
+    }
+
+    /* SECTIONS */
+    section {
+      background: white;
+      padding: 24px;
+      margin-top: 40px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .section-title {
+      font-size: 1.6rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin: 0 0 10px;
+    }
+
+    .section-text {
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .reason-card,
+    .campus-card,
+    .scholarship-item {
+      background: white;
+      padding: 16px;
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+    }
+
+    .campus-card img,
+    .scholarships-highlight img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: var(--radius);
+      display: block;
+    }
+
+    .campus-card h3 {
+      margin: 12px 0 6px;
+      font-size: 1.05rem;
+    }
+
+    .reason-card h3 {
+      margin: 0 0 6px;
+      font-size: 1.05rem;
+    }
+
+    /* FORM */
+    form {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    input,
+    select,
+    textarea {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: 1px solid rgba(37, 99, 235, 0.25);
+      font-size: 0.95rem;
+      background: #f8faff;
+      font-family: inherit;
+      color: var(--text-main);
+    }
+
+    textarea {
+      min-height: 80px;
+      resize: vertical;
+    }
+
+    footer {
+      text-align: center;
+      padding: 30px 0;
+      color: var(--text-muted);
+      margin-top: 20px;
+    }
+
+    /* WhatsApp Floating Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 58px;
+      height: 58px;
+      background: #25d366;
+      bottom: 22px;
+      right: 22px;
+      border-radius: 50%;
+      color: white;
+      font-size: 32px;
+      text-align: center;
+      line-height: 58px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
+      z-index: 999;
+      text-decoration: none;
+      transition: transform 0.2s ease;
+    }
+
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+
+    /* GDPR Cookie Banner */
+    .cookie-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: #ffffff;
+      border-top: 1px solid rgba(0, 0, 0, 0.12);
+      padding: 14px 20px;
+      display: none;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #334155;
+      box-shadow: 0 -4px 12px rgba(0, 0, 0, 0.08);
+      z-index: 1000;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .cookie-btn {
+      padding: 8px 18px;
+      background: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      cursor: pointer;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+
+    .cookie-btn:hover {
+      opacity: 0.9;
+    }
+
+    .cookie-text {
+      max-width: 75%;
+      line-height: 1.4;
+    }
+
+    .cookie-text a {
+      color: #2563eb;
+      text-decoration: underline;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .cookie-banner {
+        align-items: flex-start;
+      }
+
+      .cookie-text {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <div class="nav">
+    <div class="logo">Applydash</div>
+    <a href="#contact" class="btn-nav">Register</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div>
+      <h1 class="hero-title">
+        Apply to <span>UK universities</span> with confidence.
+      </h1>
+      <p class="hero-sub">
+        Study in the UK with Applydash — university selection, scholarships, applications & visa support.
+      </p>
+      <div class="hero-cta">
+        <a href="#contact" class="btn-primary">Get Free Counselling</a>
+      </div>
+    </div>
+
+    <div class="hero-image-card">
+      <img src="hero.jpg" alt="UK Students on campus">
+      <div class="hero-image-footer">Your UK journey starts here.</div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <h2 class="section-title">Why study in the UK?</h2>
+    <p class="section-text">Top universities · Great careers · Global recognition</p>
+
+    <div class="reason-card" style="margin-top:20px;">
+      Applydash helps you with selecting the right university, scholarships, documentation,
+      and complete visa guidance for your UK study journey.
+    </div>
+  </section>
+
+  <!-- CAROUSEL: 3 REASONS -->
+  <section id="carousel">
+    <h2 class="section-title">3 key reasons to choose the UK</h2>
+
+    <div class="swiper" style="margin-top:16px;">
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <div class="reason-card">
+            <h3>World-ranked universities</h3>
+            <p>Recognised globally for excellence and research.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="reason-card">
+            <h3>Beautiful campuses</h3>
+            <p>Experience both historic and modern university life.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <div class="reason-card">
+            <h3>Scholarships available</h3>
+            <p>Financial support & fee reductions available for international students.</p>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="swiper-pagination"></div>
+    </div>
+  </section>
+
+  <!-- CAMPUSES -->
+  <section id="campuses">
+    <h2 class="section-title">Campuses you'll love</h2>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:20px;margin-top:20px;">
+
+      <div class="campus-card">
+        <img src="campus1.jpg" alt="Campus 1">
+        <h3>London & Greater London</h3>
+        <p>Modern campus life with world-class facilities and strong employer links.</p>
+      </div>
+
+      <div class="campus-card">
+        <img src="campus2.jpg" alt="Campus 2">
+        <h3>Manchester • Leeds • Birmingham</h3>
+        <p>Affordable, vibrant student cities with excellent academic programs.</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SCHOLARSHIPS -->
+  <section id="scholarships">
+    <h2 class="section-title">Scholarships & Funding</h2>
+
+    <div class="scholarships-highlight" style="margin-top:20px;">
+      <div class="scholarship-item" style="margin-bottom:16px;">
+        <img src="library.jpg" alt="Students studying in library">
+      </div>
+
+      <strong>Applydash helps you find:</strong>
+      <ul style="margin-top:8px;color:var(--text-muted);padding-left:18px;">
+        <li>University fee waivers & tuition discounts</li>
+        <li>Merit-based and need-based scholarships</li>
+        <li>Guidance on part-time work opportunities</li>
+        <li>Budget-friendly accommodation options</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- CONTACT FORM -->
+  <section id="contact">
+    <h2 class="section-title">Register Your Interest</h2>
+    <p class="section-text">We will contact you via email & WhatsApp.</p>
+
+    <!-- Netlify Form -->
+    <form
+      name="applydash-uk-leads"
+      method="POST"
+      data-netlify="true"
+      netlify
+    >
+      <input type="hidden" name="form-name" value="applydash-uk-leads" />
+
+      <input type="text" name="full-name" placeholder="Full Name" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <input type="tel" name="phone" placeholder="WhatsApp Number" required />
+
+      <select name="level" required>
+        <option value="">Study Level</option>
+        <option value="foundation">Foundation</option>
+        <option value="bachelors">Bachelors</option>
+        <option value="masters">Masters</option>
+        <option value="phd">PhD</option>
+      </select>
+
+      <textarea name="message" placeholder="Tell us about your background"></textarea>
+
+      <button type="submit" class="btn-primary">Submit Application</button>
+    </form>
+
+    <div class="reason-card" style="margin-top:20px;">
+      <h3>Email Applydash</h3>
+      <p style="margin:6px 0;">applydash@gmail.com</p>
+      <p style="margin:0;">applydash@yahoo.com</p>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  © 2025 Applydash · Study in the UK 2026
+</footer>
+
+<!-- WhatsApp Floating Chat Button -->
+<a
+  href="https://wa.me/447743726785"
+  class="whatsapp-float"
+  target="_blank"
+  rel="noopener"
+  aria-label="Chat with Applydash on WhatsApp"
+>
+  💬
+</a>
+
+<!-- GDPR Cookie Banner -->
+<div id="cookie-banner" class="cookie-banner">
+  <div class="cookie-text">
+    We use cookies to improve your browsing experience and analyse site traffic.
+    By continuing, you agree to our <a href="#">cookie policy</a>.
+  </div>
+  <button id="cookie-accept" class="cookie-btn">Accept</button>
+</div>
+
+<!-- Swiper JS -->
+<script src="https://unpkg.com/swiper@9/swiper-bundle.min.js"></script>
+<script>
+  // Swiper carousel
+  new Swiper(".swiper", {
+    slidesPerView: 1.2,
+    spaceBetween: 20,
+    pagination: { el: ".swiper-pagination", clickable: true },
+    breakpoints: {
+      768: { slidesPerView: 2 },
+      1024: { slidesPerView: 3 }
+    }
+  });
+
+  // GDPR Cookie banner logic
+  document.addEventListener("DOMContentLoaded", function () {
+    const banner = document.getElementById("cookie-banner");
+    const btn = document.getElementById("cookie-accept");
+
+    if (!localStorage.getItem("applydashCookieAccepted")) {
+      banner.style.display = "flex";
+    }
+
+    btn.addEventListener("click", function () {
+      localStorage.setItem("applydashCookieAccepted", "true");
+      banner.style.display = "none";
+    });
+  });
+</script>
+
+</body>
+</html>
